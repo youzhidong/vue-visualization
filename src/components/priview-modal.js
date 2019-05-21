@@ -4,6 +4,7 @@ import tForm from '../templates/t-form/setting'
 import tInput from '../templates/t-input/setting'
 import tHeader from '../templates/t-header/setting'
 import tText from '../templates/t-text/setting'
+import tMonitoring from '../templates/t-monitoring/setting'
 import tImage from '../templates/t-image/setting'
 import tSwiper from '../templates/t-swiper/setting'
 import { Modal } from 'iview'
@@ -22,6 +23,7 @@ export default {
         tInput,
         tHeader,
         tText,
+        tMonitoring,
         tImage,
         tSwiper
     },

@@ -6,6 +6,7 @@ import tForm from '../templates/t-form/setting'
 import tInput from '../templates/t-input/setting'
 import tHeader from '../templates/t-header/setting'
 import tText from '../templates/t-text/setting'
+import tMonitoring from '../templates/t-monitoring/setting'
 import tImage from '../templates/t-image/setting'
 import tSwiper from '../templates/t-swiper/setting'
 import eventBus from '../utils/eventBus'
@@ -24,6 +25,7 @@ export default {
         tInput,
         tHeader,
         tText,
+        tMonitoring,
         tImage,
         tSwiper
      },
@@ -51,6 +53,7 @@ export default {
             return this.$parent.s
         },
         optionComponents() {
+            console.log('optionComponents', this.$options)
             return this.$options.components
         }
     },
@@ -79,6 +82,7 @@ export default {
             this.editItem({uuid: item.uuid, itemData, componentSetting})
         },
         renderComponents(h, list, nestItem) {
+            console.log(list, nestItem)
             return h('draggable', {
                 class: this.s.view_area,
                 props: {

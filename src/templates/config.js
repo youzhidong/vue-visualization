@@ -1,5 +1,8 @@
 export default {
     base: [{
+        text: '云服务器监控',
+        name: 'tMonitoring'
+    }, {
         text: '标题',
         name: 'tHeader'
     }, {

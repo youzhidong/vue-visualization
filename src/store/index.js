@@ -20,6 +20,10 @@ const store =  new Vuex.Store({
         updateUuid(state, {id, prefix}) {
             state[prefix+'Uuid'] = id
         },
+        removeItem(vm, item){
+            let index = vm.componentsList.findIndex(itx => itx.name === item.name)
+            vm.componentsList.splice(index, 1);
+        },
         addItem(state) {
             // console.log(state.componentsList);
         },
