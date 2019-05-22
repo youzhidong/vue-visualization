@@ -1,6 +1,7 @@
 <template>
     <span :style="{
-        color, 
+        color,
+        width: width + 'px',
         backgroundColor: bgColor, 
         fontSize: fontSize + 'px',
         display: 'inline-flex'}">{{text}}</span>
@@ -8,6 +9,7 @@
 <script>
 export default {
     props: {
+        width: [Number, String],
         color: String,
         bgColor: String,
         fontSize: [Number, String],

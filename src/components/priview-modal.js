@@ -101,7 +101,7 @@ export default {
                         props: {
                             transfer: true,
                             value: this.value,
-                            width: 400
+                            width: 800
                         },
                         on: {
                             'on-cancel': this.close,

@@ -2,11 +2,11 @@
   <div
     class="canvas"
     ref="canvasLine"
-    style="height:250px;"
+    :style="{height: height+'px'}"
   ></div>
 </template>
 <script>
-
+import eventBus from '@/utils/eventBus'
 // 引入 ECharts 主模块
 const echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/line');
@@ -24,8 +24,16 @@ export default {
   //     type: Boolean,
   //   },
   // },
+  props: {
+    width: [Number, String],
+    height: [Number, String],
+    http: String,
+  },
+  computed:{
+  },
   data(){
     return {
+      timer: null,
       echartsData : {
         text: 'cpu使用率',
         legendData: [
@@ -63,20 +71,38 @@ export default {
     }
   },
   watch: {
-    echartsData() {
-      this.reDraw();
-    }
-    // isResize() {
-    //   this.myChartLine.resize();
-    // }
+    width(val) {
+      setTimeout(()=>{
+        this.myChartLine.resize();
+      }, 800)
+    },
+    height(val) {
+      setTimeout(()=>{
+        this.myChartLine.resize();
+      }, 800)
+    },
+    http(val) {
+      
+    },
   },
   mounted() {
     // 解决预览数据不加载的 bug
     setTimeout(()=>{
       this.reDraw();
     })
+    // eventBus.$on('update-setting', data => {
+    //   if(data.name !== 'tMonitoring') return;
+    //   console.log(data)
+    //   setTimeout(()=>{
+    //     this.w = data.appearance.width.componentData.value
+    //     this.h = data.appearance.height.componentData.value
+    //     this.myChartLine.resize();
+    //   }, 600)
+    // })
   },
   methods: {
+    init(){
+    },
     // 数据改变重绘
     reDraw() {
       this.drawLine(this.echartsData)
@@ -225,6 +251,6 @@ export default {
   border-radius: 15px;
   padding: 7px 5px 0 5px;
   box-sizing: border-box;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12); */
 }
 </style>

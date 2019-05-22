@@ -1,5 +1,12 @@
 import index from './index.vue'
 const appearance = { 
+    width: {
+        name: 'i-input',
+        label: '宽度',
+        componentData: {
+            value: 200
+        }
+    },
     color: {
         name: 'tColorPicker',
         label: '字体颜色',

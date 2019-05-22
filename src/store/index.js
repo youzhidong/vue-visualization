@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { getChildComponent } from '../utils/index'
+import { Object } from 'core-js';
 
 Vue.use(Vuex)
 
@@ -18,10 +19,12 @@ const store =  new Vuex.Store({
 	},
     mutations: {
         updateUuid(state, {id, prefix}) {
+            console.log(state.componentsList)
             state[prefix+'Uuid'] = id
         },
         removeItem(vm, item){
-            let index = vm.componentsList.findIndex(itx => itx.name === item.name)
+            event.cancelBubble = true;
+            let index = vm.componentsList.findIndex(itx => JSON.stringify(itx) === JSON.stringify(item))
             vm.componentsList.splice(index, 1);
         },
         addItem(state) {
@@ -30,6 +33,7 @@ const store =  new Vuex.Store({
         editItem(state, {uuid, itemData, componentSetting}) {
             state.editUuid = uuid
             let set = Object.assign({}, JSON.parse(JSON.stringify(componentSetting)))
+            console.log(set)
             Object.keys(set.appearance || {}).forEach(key => {
                 set.appearance[key].componentData.value = itemData.appearance[key] || set.appearance[key].componentData.value
             })

@@ -53,7 +53,6 @@ export default {
             return this.$parent.s
         },
         optionComponents() {
-            console.log('optionComponents', this.$options)
             return this.$options.components
         }
     },
@@ -65,9 +64,6 @@ export default {
         ]),
 		onAdd(res) {
             this.updateUuid({id: this.tempUuid, prefix: 'edit'})
-            // const cloneNode = res.clone
-            // this.doEdit({name: cloneNode.attributes.name.value}, res.newIndex)
-            // const item = this.componentsList[res.newIndex]
         },
         onSort() {
             const item = getChildComponent(this.componentsList, this.editUuid)
@@ -103,7 +99,8 @@ export default {
                         }
                     }
                     return (
-                        <div 
+                        <div
+                            style={'width:'+ item.appearance.width + '%'}
                             class={[this.s.component_row, this.editUuid === item.uuid ? this.s.active : '']}
                             data-uuid={item.uuid}
                             onClick={this.doEdit.bind(this, item)}>
@@ -112,32 +109,35 @@ export default {
                             </div>
                             {
                                 (() => {
-                                    if (nestItem) {
-                                        const nestComponentOptions = this.optionComponents[nestItem.name]
-                                        if (itemIsNest) {
-                                            return nestComponentOptions.nestRender(h, h(item.name, {
-                                                props: { ...item.appearance, ...item.content }
-                                            }, [
-                                                this.renderComponents(h, item.children, item)
-                                            ]), item)
-                                        } else {
-                                            return nestComponentOptions.nestRender(h, h(item.name, {
-                                                props: { ...item.appearance, ...item.content }
-                                            }), item)
-                                        }
-                                    } else {
-                                        if (itemIsNest) {
-                                            return h(item.name, {
-                                                props: { ...item.appearance, ...item.content }
-                                            }, [
-                                                this.renderComponents(h, item.children, item)
-                                            ])
-                                        } else {
-                                            return h(item.name, {
-                                                props: { ...item.appearance, ...item.content }
-                                            })
-                                        }
-                                    }
+                                    // if (nestItem) {
+                                    //     const nestComponentOptions = this.optionComponents[nestItem.name]
+                                    //     if (itemIsNest) {
+                                    //         return nestComponentOptions.nestRender(h, h(item.name, {
+                                    //             props: { ...item.appearance, ...item.content }
+                                    //         }, [
+                                    //             this.renderComponents(h, item.children, item)
+                                    //         ]), item)
+                                    //     } else {
+                                    //         return nestComponentOptions.nestRender(h, h(item.name, {
+                                    //             props: { ...item.appearance, ...item.content }
+                                    //         }), item)
+                                    //     }
+                                    // } else {
+                                    //     if (itemIsNest) {
+                                    //         return h(item.name, {
+                                    //             props: { ...item.appearance, ...item.content }
+                                    //         }, [
+                                    //             this.renderComponents(h, item.children, item)
+                                    //         ])
+                                    //     } else {
+                                    //         return h(item.name, {
+                                    //             props: { ...item.appearance, ...item.content }
+                                    //         })
+                                    //     }
+                                    // }
+                                    return h(item.name, {
+                                        props: { ...item.appearance, ...item.content }
+                                    })
                                 })()
                             }
                         </div>

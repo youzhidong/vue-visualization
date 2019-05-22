@@ -62,7 +62,7 @@ export default {
                             return Object.keys(this.editSettng.appearance || {}).map(key => {
                                 let itemSetting = this.editSettng.appearance[key]
                                 return (
-                                    <i-form label-position="left" label-width={80}>
+                                    <i-form label-position="left" label-width={40}>
                                         <form-item label={itemSetting.label}>
                                             {
                                                 h(itemSetting.name, {
@@ -91,7 +91,7 @@ export default {
                             return Object.keys(this.editSettng.content || {}).map(key => {
                                 let itemSetting = this.editSettng.content[key]
                                 return (
-                                    <i-form label-position="left" labelWidth={80}>
+                                    <i-form label-position="left" labelWidth={60}>
                                         <form-item label={itemSetting.label}>
                                             {
                                                 h(itemSetting.name, {

@@ -11,7 +11,7 @@
 			<edit-area></edit-area>
 		</div>
 		<div :class="s.btnBar">
-			<Button type="default" style="margin-right: 16px;" @click="show=true">预览</Button>
+			<!-- <Button type="default" style="margin-right: 16px;" @click="show=true">预览</Button> -->
 			<Button type="primary" @click="getData">提交配置</Button>
 		</div>
 		<priview-modal v-if="show" v-model="show"></priview-modal>
